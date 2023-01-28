@@ -52,11 +52,6 @@ jobs:
 
     - run: brew upgrade
 
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-        version: '6.3.1'
-
     - name: Install Conan
       id: conan
       uses: turtlebrowser/get-conan@main

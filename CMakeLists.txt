@@ -16,9 +16,6 @@ add_subdirectory( 3rdparty/podofo )
 
 enable_testing()
 
-find_package( Qt6Core REQUIRED )
-find_package( Qt6Gui REQUIRED )
-
 add_definitions( -DPODOFO_SHARED )
 add_definitions( -Dpodofo_shared_EXPORTS )
 
@@ -33,8 +30,7 @@ link_directories( ${CMAKE_CURRENT_BINARY_DIR}/3rdparty/podofo/src )
 
 add_executable( podofo_jpg_img ${SRC} )
 
-target_link_libraries( podofo_jpg_img podofo_shared
-	Qt6::Gui Qt6::Core )
+target_link_libraries( podofo_jpg_img podofo_shared )
 
 add_test( NAME podofo_jpg_img
 	COMMAND ${CMAKE_CURRENT_BINARY_DIR}/podofo_jpg_img
