@@ -19,7 +19,7 @@ class CompressorRecipe(ConanFile):
     def configure(self):
         self.options["openssl"].shared = True
         self.options["freetype"].shared = True
-        self.options["libjpeg"].shared = True
+        self.options["libjpeg-turbo"].shared = True
         self.options["libpng"].shared = True
         self.options["zlib"].shared = True
         self.options["libtiff"].shared = True
