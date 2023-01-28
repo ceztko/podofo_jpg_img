@@ -70,4 +70,4 @@ jobs:
         export QT_QPA_PLATFORM=offscreen
         export DYLD_FALLBACK_LIBRARY_PATH=${{ github.workspace }}/bin:$DYLD_FALLBACK_LIBRARY_PATH
         export DYLD_FRAMEWORK_PATH=${{ github.workspace }}/../Qt/6.3.1/macos/lib:$DYLD_FRAMEWORK_PATH
-        ./podofo_jpg_img
+        ldd podofo_jpg_img && ./podofo_jpg_img
