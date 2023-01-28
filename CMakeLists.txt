@@ -39,5 +39,7 @@ target_link_libraries( podofo_jpg_img podofo_shared )
 #	COMMAND ${CMAKE_CURRENT_BINARY_DIR}/podofo_jpg_img
 #	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} )
 
+message("Output path: ${CMAKE_CURRENT_BINARY_DIR}")
+
 file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/1.jpg DESTINATION ${CMAKE_CURRENT_BINARY_DIR} )
 
