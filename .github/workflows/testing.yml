@@ -1,0 +1,78 @@
+# For most projects, this workflow file will not need changing; you simply need
+# to commit it to your repository.
+#
+# You may wish to alter this file to override the set of languages analyzed,
+# or to provide custom queries or build logic.
+name: "build"
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  macos:
+    name: macos
+    runs-on: macos-11
+
+    strategy:
+      fail-fast: true
+      matrix:
+        language: ['cpp']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+
+    - run: brew update
+
+    - run: rm '/usr/local/bin/2to3'
+
+    - run: rm '/usr/local/bin/2to3-3.11'
+
+    - run: rm '/usr/local/bin/idle3'
+
+    - run: rm '/usr/local/bin/idle3.11'
+
+    - run: rm '/usr/local/bin/pydoc3'
+
+    - run: rm '/usr/local/bin/pydoc3.11'
+
+    - run: rm '/usr/local/bin/python3'
+
+    - run: rm '/usr/local/bin/python3.11'
+
+    - run: rm '/usr/local/bin/python3-config'
+
+    - run: rm '/usr/local/bin/python3.11-config'
+
+    - run: brew upgrade
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.3.1'
+
+    - name: Install Conan
+      id: conan
+      uses: turtlebrowser/get-conan@main
+
+    - name: Install dependencies with Conan
+      run: conan install . --build=missing
+
+    - name: Generate Makefiles
+      run: cmake -DCMAKE_BUILD_TYPE=Relese .
+
+    - name: Build
+      run: make
+
+    - name: Test
+      run: |
+        export QT_QPA_PLATFORM=offscreen
+        export DYLD_FALLBACK_LIBRARY_PATH=${{ github.workspace }}/bin:$DYLD_FALLBACK_LIBRARY_PATH
+        export DYLD_FRAMEWORK_PATH=${{ github.workspace }}/../Qt/6.3.1/macos/lib:$DYLD_FRAMEWORK_PATH
+        ctest --output-on-failure --verbose
