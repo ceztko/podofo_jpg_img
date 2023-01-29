@@ -1,6 +1,6 @@
 from conan import ConanFile
 
-class CompressorRecipe(ConanFile):
+class DependenciesRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake_find_package"
 
@@ -29,4 +29,4 @@ class CompressorRecipe(ConanFile):
 
     def imports(self):
         self.copy("*.dll", "bin", "bin")
-        self.copy("*.dylib*", src="@libdirs", dst="lib")
+        self.copy("*.dylib", "lib", "lib")
