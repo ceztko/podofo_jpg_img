@@ -248,3 +248,5 @@ if (WIN32)
     set(CPACK_GENERATOR "WIX")
 endif()
 include(CPack)
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/../../path.txt.in ${CMAKE_CURRENT_SOURCE_DIR}/../../path.txt )
