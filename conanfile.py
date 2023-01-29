@@ -29,4 +29,4 @@ class DependenciesRecipe(ConanFile):
 
     def imports(self):
         self.copy("*.dll", "bin", "bin")
-        self.copy("*.dylib", "lib", "lib")
+        #self.copy("*.dylib", "lib", "lib")

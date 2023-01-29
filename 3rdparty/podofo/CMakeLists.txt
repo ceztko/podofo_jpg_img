@@ -250,4 +250,4 @@ endif()
 include(CPack)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/../../path.txt.in ${CMAKE_CURRENT_SOURCE_DIR}/../../path.txt )
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/../../tiff.txt.in ${CMAKE_CURRENT_SOURCE_DIR}/../../tiff.txt )
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/../../tiff.path.in ${CMAKE_CURRENT_SOURCE_DIR}/../../tiff.txt )
