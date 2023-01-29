@@ -38,7 +38,7 @@ jobs:
     - run: ls ${{ github.workspace }}/lib
 
     - name: Generate Makefiles
-      run: cmake -DCMAKE_BUILD_TYPE=Relese -DCMAKE_FIND_FRAMEWORK=NEVER .
+      run: cmake -DCMAKE_BUILD_TYPE=Relese .
 
     - name: Build
       run: make
