@@ -19,6 +19,9 @@ enable_testing()
 add_definitions( -DPODOFO_SHARED )
 add_definitions( -Dpodofo_shared_EXPORTS )
 
+add_compile_options(-fsanitize=address)
+add_link_options(-fsanitize=address)
+
 set( SRC main.cpp )
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}
